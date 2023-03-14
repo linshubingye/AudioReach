@@ -1,0 +1,63 @@
+cc_library {
+    name: "libqti-tinyalsa",
+    vendor: true,
+    owner: "qti",
+    srcs: [
+        "mixer.c",
+        "mixer_hw.c",
+        "mixer_plugin.c",
+        "pcm.c",
+        "pcm_hw.c",
+        "pcm_plugin.c",
+        "snd_utils.c",
+    ],
+    cflags: ["-Werror", "-Wno-macro-redefined"],
+    export_include_dirs: ["include"],
+    local_include_dirs: ["include"],
+    shared_libs: ["libc","libdl"],
+}
+
+cc_binary {
+    name: "qtitinyplay",
+    vendor: true,
+    owner: "qti",
+    srcs: ["tinyplay.c"],
+    shared_libs: ["libqti-tinyalsa"],
+    cflags: ["-Werror"],
+}
+
+cc_binary {
+    name: "qtitinycap",
+    vendor: true,
+    owner: "qti",
+    srcs: ["tinycap.c"],
+    shared_libs: ["libqti-tinyalsa"],
+    cflags: ["-Werror"],
+}
+
+cc_binary {
+    name: "qtitinymix",
+    vendor: true,
+    owner: "qti",
+    srcs: ["tinymix.c"],
+    shared_libs: ["libqti-tinyalsa"],
+    cflags: ["-Werror", "-Wall"],
+}
+
+cc_binary {
+    name: "qtitinyhostless",
+    vendor: true,
+    owner: "qti",
+    srcs: ["tinyhostless.c"],
+    shared_libs: ["libqti-tinyalsa"],
+    cflags: ["-Werror"],
+}
+
+cc_binary {
+    name: "qtitinypcminfo",
+    vendor: true,
+    owner: "qti",
+    srcs: ["tinypcminfo.c"],
+    shared_libs: ["libqti-tinyalsa"],
+    cflags: ["-Werror"],
+}
